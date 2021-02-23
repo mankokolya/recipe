@@ -5,7 +5,7 @@ import guru.springframework.recipe.repositories.RecipeRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.Mockito;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +20,7 @@ public class RecipeServiceImplTest {
 
     @Before
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
+        recipeRepository = Mockito.mock(RecipeRepository.class);
         recipeService = new RecipeServiceImpl(recipeRepository);
     }
 
