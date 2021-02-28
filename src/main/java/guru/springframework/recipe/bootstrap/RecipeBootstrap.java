@@ -87,9 +87,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                 + System.lineSeparator() +
                 "Serve immediately, or if making a few hours ahead, place plastic wrap on the surface of the guacamole " +
                 "and press down to cover it and to prevent air reaching it. (The oxygen in the air causes oxidation " +
-                "which will turn the guacamole brown.) Refrigerate until ready to serve."
-                + System.lineSeparator() +
-                "Read more: https://www.simplyrecipes.com/recipes/perfect_guacamole/");
+                "which will turn the guacamole brown.) Refrigerate until ready to serve.");
 
         Notes guacamoleNotes = new Notes();
         guacamoleNotes.setRecipeNotes("For a very quick guacamole just take a 1/4 cup of salsa and mix it in with your" +
@@ -100,6 +98,10 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                 "chunks of peaches in it (a Diana Kennedy favorite). You can get creative with homemade guacamole!");
 
         guacamoleRecipe.setNotes(guacamoleNotes);
+
+        guacamoleRecipe.setUrl("https://www.simplyrecipes.com/recipes/perfect_guacamole");
+        guacamoleRecipe.setServings(4);
+        guacamoleRecipe.setSource("Simple recipe");
 
         guacamoleRecipe.addIngredient(new Ingredient("ripe avocados", new BigDecimal(2), eachUom));
         guacamoleRecipe.addIngredient(new Ingredient("Kosher salt", new BigDecimal(".5"), teaSpoonUom));
