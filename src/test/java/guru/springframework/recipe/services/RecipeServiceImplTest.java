@@ -1,5 +1,6 @@
 package guru.springframework.recipe.services;
 
+import guru.springframework.recipe.converters.*;
 import guru.springframework.recipe.domain.Recipe;
 import guru.springframework.recipe.repositories.RecipeRepository;
 import org.junit.Before;
@@ -10,7 +11,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.lang.management.OperatingSystemMXBean;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -29,7 +29,12 @@ public class RecipeServiceImplTest {
     @Before
     public void setUp() {
         recipeRepository = Mockito.mock(RecipeRepository.class);
-        recipeService = new RecipeServiceImpl(recipeRepository);
+        recipeService = new RecipeServiceImpl(recipeRepository,
+                new RecipeCommandToRecipe(new NoteCommandToNote(),
+                        new IngredientCommandToIngredient(new UnitOfMeasureCommandToUnitOfMeasure()),
+                        new CategoryCommandToCategory()),
+                new RecipeToRecipeCommand(new IngredientToIngredientCommand(new UnitOfMeasureToUnitOfMeasureCommand()),
+                        new NoteToNoteCommand(), new CategoryToCategoryCommand()));
     }
 
     @Test
