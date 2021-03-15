@@ -31,14 +31,13 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Description</th>
-                                <th>View</th>
                                 <th>Update</th>
                                 <th>Delete</th>
                             </tr>
                             </thead>
                                 <td th:text="${ingredient.getId()}">ID</td>
                                 <td th:text="${ingredient.amount} + ' ' + ${ingredient.unitOfMeasure.getDescription()}
-                                + ' ' + ${ingredient.description} + '/show'">Description</td>
+                                + ' ' + ${ingredient.description}">Description</td>
                                 <td> <a href="#" th:href="@{'/ingredient/' + ${ingredient.id} + '/update'}">Update</a></td>
                                 <td> <a href="#" th:href="@{'/ingredient/' + ${ingredient.id} + '/delete'}">Delete</a></td>
                         </table>
