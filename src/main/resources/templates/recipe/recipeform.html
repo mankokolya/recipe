@@ -66,10 +66,12 @@
 
                                 <div class="col-md-3 form-group">
                                     <label>Difficulty:</label>
-                                    <select class="form-control">
-                                        <option>Easy</option>
-                                        <option>Medium</option>
-                                        <option>Hard</option>
+                                    <select class="form-control" th:field="*{difficulty}">
+                                        <option
+                                                th:each="difficultValue : ${T(guru.springframework.recipe.domain.Difficulty).values()}"
+                                                th:value="${difficultValue.name()}"
+                                                th:text="${difficultValue.name()}"
+                                        > Difficulty </option>
                                     </select>
                                 </div>
                             </div>
@@ -112,7 +114,8 @@
                                         <li th:each="ingredient : ${recipe.ingredients}"
                                             th:text="${(ingredient.getAmount() + ' '
                                             + ingredient.unitOfMeasure.getDescription() + ' - '
-                                            + ingredient.getDescription())}"> 1 Teaspoon of Sugar </li>
+                                            + ingredient.getDescription())}"> 1 Teaspoon of Sugar
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -127,7 +130,7 @@
                             <div class="row">
                                 <div class="col-md-12 form-group">
 
-                                        <textarea class="form-control" rows="3" th:field="*{directions}"></textarea>
+                                    <textarea class="form-control" rows="3" th:field="*{directions}"></textarea>
 
                                 </div>
                             </div>
@@ -141,7 +144,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-12 form-group">
-                                        <textarea class="form-control" rows="3" th:field="*{notes.recipeNotes}"></textarea>
+                                    <textarea class="form-control" rows="3" th:field="*{notes.recipeNotes}"></textarea>
                                 </div>
                             </div>
                         </div>
