@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.HashSet;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -109,5 +110,14 @@ public class IngredientControllerTest {
                 .andExpect(model().attributeExists("uomList"));
 
         verify(recipeService, times(1)).findRecipeCommandById(anyLong());
+    }
+
+    @Test
+    public void testDeleteIngredient() throws Exception {
+
+        mockMvc.perform(get("/recipe/2/ingredient/3/delete"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/recipe/2/ingredients"));
+        verify(ingredientService, times(1)).deleteById(anyLong(), anyLong());
     }
 }
